@@ -32,12 +32,11 @@ jobs:
         mkdir gh-pages
         cp -R playwright-report/* gh-pages/
         touch gh-pages/.nojekyll
-        git config --global user.name "github-actions[bot]"
-        git config --global user.email "github-actions[bot]@users.noreply.github.com"
-        git init
         git -C gh-pages init
+        git -C gh-pages config user.name "github-actions[bot]"
+        git -C gh-pages config user.email "github-actions[bot]@users.noreply.github.com"
         git -C gh-pages add .
         git -C gh-pages commit -m "Deploy Playwright report"
         git -C gh-pages branch -M gh-pages
-        git -C gh-pages remote add origin https://github.com/${{ github.repository }}.git
+        git -C gh-pages remote add origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git
         git -C gh-pages push -f origin gh-pages
