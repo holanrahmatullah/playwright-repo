@@ -26,14 +26,6 @@ jobs:
         name: playwright-report
         path: playwright-report/
         retention-days: 30
-     - name: Configure Git User
-      run: |
-        git config user.name "github-actions[bot]"
-        git config user.email "github-actions[bot]@users.noreply.github.com"
-    - name: Check Git Config
-      run: |
-        echo "Git User Name: $(git config --get user.name)"
-        echo "Git User Email: $(git config --get user.email)"
     - name: Deploy Playwright report to GitHub Pages
       if: ${{ success() }}
       run: |
