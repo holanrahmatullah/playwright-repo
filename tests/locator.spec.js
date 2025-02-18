@@ -1,8 +1,6 @@
 // @ts-check
 const {test, expect} = require('@playwright/test')
 
-
-
 test('Locator and Assertation', async ({page}) => {
     await page.goto('https://www.saucedemo.com/');
     await expect(page).toHaveTitle("Swag Labs");
@@ -90,7 +88,5 @@ test('Locator and Assertation', async ({page}) => {
     await expect(page.locator('[data-test="complete-text"]')).toHaveText('Your order has been dispatched, and will arrive just as fast as the pony can get there!')
     await expect(page.locator('[data-test="pony-express"]')).toBeVisible()
 
-
-
-
 })
+
